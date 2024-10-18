@@ -1,0 +1,21 @@
+{
+  "name": "naval-battle",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "readline-sync": "^1.4.10"
+  },
+  "dependencies": {
+    "etna-eslint": "github:etna-alternance/ETNA-Linter",
+    "@types/node": "^20.0.0",
+    "readline-sync": "^1.4.10"
+  }
+}
