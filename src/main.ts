@@ -1,9 +1,16 @@
 const rl = require('readline-sync');
+const { program } = require('commander')
 
-// const answer = rl.keyInYN('test?')
-// const answer2 = rl.keyInSelect(['1', '2', '3'], 'test?')
+program.option('-n, --number <n>', 'number of ships for each player')
+program.parse(process.argv);
+const options = program.opts();
 
-const number = 3
+const number = options.number
+
+if (number < 1 || number > 64) {
+  console.log('You must provide a number of ships between 1 and 64.');
+  process.exit()
+}
 
 const letters: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
@@ -76,7 +83,7 @@ function play() {
   let player1Ships: string[] = []
   let player2Ships: string[] = []
 
-  while (player1Ships.length < 3) {
+  while (player1Ships.length < number) {
     let firstShipP1 = rl.question('Player 1 place a ship: ').toLocaleUpperCase()
     while (!choices.includes(firstShipP1)) {
       console.log('Please provide an available square.');
@@ -99,7 +106,7 @@ function play() {
 
   console.log('All ships placed for player 1');
 
-  while (player2Ships.length < 3) {
+  while (player2Ships.length < number) {
     let firstShipP2 = rl.question('Player 2 place a ship: ').toLocaleUpperCase()
     while (!choices.includes(firstShipP2)) {
       console.log('Please provide an available square.');

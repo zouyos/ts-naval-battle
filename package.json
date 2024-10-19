@@ -14,8 +14,9 @@
     "readline-sync": "^1.4.10"
   },
   "dependencies": {
-    "etna-eslint": "github:etna-alternance/ETNA-Linter",
     "@types/node": "^20.0.0",
+    "commander": "^12.1.0",
+    "etna-eslint": "github:etna-alternance/ETNA-Linter",
     "readline-sync": "^1.4.10"
   }
 }
