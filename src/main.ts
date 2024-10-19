@@ -85,15 +85,11 @@ function play(): void {
 
   while (player1Ships.length < number) {
     let firstShipP1: string = rl.question('Player 1 place a ship: ').toLocaleUpperCase();
-    while (!choices.includes(firstShipP1)) {
-      console.log('Please provide an available square.');
-      displayBoard(matrix1);
-      firstShipP1 = rl.question('Player 1 place a ship: ').toLocaleUpperCase();
-    }
     let rowFirstShipP1: number = Number(firstShipP1.charAt(1));
     let colFirstShipP1: number = letters.indexOf(firstShipP1.charAt(0));
-    while (matrix1[rowFirstShipP1 - 1][colFirstShipP1] === 'O') {
-      console.log('There is already a ship on this square.');
+    while (!choices.includes(firstShipP1) || matrix1[rowFirstShipP1 - 1][colFirstShipP1] === 'O') {
+      console.log('Please provide an available square.');
+      displayBoard(matrix1);
       firstShipP1 = rl.question('Player 1 place a ship: ').toLocaleUpperCase();
       rowFirstShipP1 = Number(firstShipP1.charAt(1));
       colFirstShipP1 = letters.indexOf(firstShipP1.charAt(0));
@@ -108,15 +104,11 @@ function play(): void {
 
   while (player2Ships.length < number) {
     let firstShipP2 = rl.question('Player 2 place a ship: ').toLocaleUpperCase();
-    while (!choices.includes(firstShipP2)) {
-      console.log('Please provide an available square.');
-      displayBoard(matrix2);
-      firstShipP2 = rl.question('Player 2 place a ship: ').toLocaleUpperCase();
-    }
     let rowFirstShipP2: number = Number(firstShipP2.charAt(1));
     let colFirstShipP2: number = letters.indexOf(firstShipP2.charAt(0));
-    while (matrix2[rowFirstShipP2 - 1][colFirstShipP2] === 'O') {
-      console.log('There is already a ship on this square.');
+    while (!choices.includes(firstShipP2) || matrix2[rowFirstShipP2 - 1][colFirstShipP2] === 'O') {
+      console.log('Please provide an available square.');
+      displayBoard(matrix2);
       firstShipP2 = rl.question('Player 2 place a ship: ').toLocaleUpperCase();
       rowFirstShipP2 = Number(firstShipP2.charAt(1));
       colFirstShipP2 = letters.indexOf(firstShipP2.charAt(0));
