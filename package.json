@@ -10,11 +10,11 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@types/node": "^20.0.0",
+    "@types/node": "^18.19.50",
     "readline-sync": "^1.4.10"
   },
   "dependencies": {
-    "@types/node": "^20.0.0",
+    "@types/node": "^18.19.50",
     "commander": "^12.1.0",
     "etna-eslint": "github:etna-alternance/ETNA-Linter",
     "readline-sync": "^1.4.10"
