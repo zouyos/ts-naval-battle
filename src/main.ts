@@ -5,7 +5,7 @@ program.option('-n, --number <n>', 'number of ships for each player')
 program.parse(process.argv);
 const options = program.opts();
 
-const number = options.number
+const number: number = options.number
 
 if (number < 1 || number > 64) {
   console.log('You must provide a number of ships between 1 and 64.');
@@ -24,23 +24,23 @@ function fillChoices(arr: string[]) {
   return newArr;
 }
 
-const choices = fillChoices(letters);
+const choices: string[] = fillChoices(letters);
 
-const matrix1 = Array(8).fill('.').map(() => Array(8).fill('.'));
-const matrix2 = Array(8).fill('.').map(() => Array(8).fill('.'));
-let player1Play = true
+const matrix1: string[][] = Array(8).fill('.').map(() => Array(8).fill('.'));
+const matrix2: string[][] = Array(8).fill('.').map(() => Array(8).fill('.'));
+let player1Play: boolean = true
 
-function displayBoard(mat: string[][]) {
+function displayBoard(mat: string[][]): void {
   console.log(`   ${letters.join(' ')}`);
   mat.forEach((arr, i) => {
     console.log(`${i + 1} [${arr.join(' ')}]`);
   });
 }
 
-function displayFakeBoard(mat: string[][]) {
-  const newMat = mat.map(row => [...row]);
+function displayFakeBoard(mat: string[][]): void {
+  const newMat: string[][] = mat.map(row => [...row]);
   newMat.forEach((arr) => {
-    arr.forEach((square, i) => {
+    arr.forEach((square: string, i: number) => {
       if (square === 'O') {
         arr[i] = '.'
       }
@@ -49,17 +49,17 @@ function displayFakeBoard(mat: string[][]) {
   displayBoard(newMat)
 }
 
-function placeShip(square: string, mat: string[][]) {
+function placeShip(square: string, mat: string[][]): void {
   const row: number = Number(square.charAt(1));
   const col: number = letters.indexOf(square.charAt(0));
   mat[row - 1][col] = 'O'
 }
 
-function togglePlayer1() {
+function togglePlayer1(): void {
   player1Play = !player1Play
 }
 
-function targetSquare(square: string, mat: string[][]) {
+function targetSquare(square: string, mat: string[][]): void {
   const row: number = Number(square.charAt(1));
   const col: number = letters.indexOf(square.charAt(0));
   if (mat[row - 1][col] === 'O') {
@@ -73,10 +73,10 @@ function targetSquare(square: string, mat: string[][]) {
 }
 
 function winCheck(mat: string[][]) {
-  return !mat.some((arr) => arr.some((square: string) => square === 'O'))
+  return !mat.some((arr: string[]) => arr.some((square: string) => square === 'O'))
 }
 
-function play() {
+function play(): void {
   console.log('Welcome to this naval battle game');
   displayBoard(matrix1);
 
@@ -84,7 +84,7 @@ function play() {
   let player2Ships: string[] = []
 
   while (player1Ships.length < number) {
-    let firstShipP1 = rl.question('Player 1 place a ship: ').toLocaleUpperCase()
+    let firstShipP1: string = rl.question('Player 1 place a ship: ').toLocaleUpperCase()
     while (!choices.includes(firstShipP1)) {
       console.log('Please provide an available square.');
       displayBoard(matrix1);
@@ -131,7 +131,7 @@ function play() {
 
   console.log('Now let\'s play!');
   while (!(winCheck(matrix1) || winCheck(matrix2))) {
-    let playerMove = rl.question(`${player1Play ? 'Player 1' : 'Player 2'} target a square: `).toLocaleUpperCase()
+    let playerMove: string = rl.question(`${player1Play ? 'Player 1' : 'Player 2'} target a square: `).toLocaleUpperCase()
     if (!choices.includes(playerMove)) {
       console.log('Please provide a valid value.');
     } else {
@@ -152,7 +152,7 @@ function play() {
       }
     }
   }
-  const winner = winCheck(matrix1) ? 'player 2' : 'player 1'
+  const winner: string = winCheck(matrix1) ? 'player 2' : 'player 1'
   console.log(`Congratulations ${winner}, You won!`);
 }
 
